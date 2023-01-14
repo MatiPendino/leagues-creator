@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card o-hidden border-0 shadow-lg w-75 mx-auto mt-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Editar equipo</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {{ form.as_p }}
+                <div class=" mt-4 text-center">
+                    <a onclick="history.back();" class="btn btn-danger col-lg-2 mb-2 mx-4">Cancelar</a>
+                    <input type="submit" class="btn btn-success col-lg-3 mb-2 mx-4" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

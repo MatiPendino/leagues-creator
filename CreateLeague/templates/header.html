@@ -1,0 +1,27 @@
+{% load static %}
+<style>
+    .element{
+        color: white;
+        transition: .4s;
+    }
+
+    .element:hover {
+        color: rgb(60,60,60) !important;
+    }
+
+    .contenedor {
+        background-color: rgb(36,74,193);
+    }
+</style>
+
+<nav>
+    <div class="d-flex flex-row justify-content-evenly py-4 contenedor">
+        <a href="/" class="col-3 text-left"><img src="{% static '/images/logo.png' %}" alt="Logo" style="width: 30%;"></a>
+        <a class="btn text-uppercase element my-auto" href="/liga/crear_liga">Crear liga</a>
+        {% if user.is_authenticated %}
+            <a class="btn text-uppercase element my-auto" href="auth/sign_out">{{user.username}}</a>
+        {% else %}
+            <a class="btn text-uppercase element my-auto" href="/auth/signin">Log In</a>
+        {% endif %}
+    </div>
+</nav>

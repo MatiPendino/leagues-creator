@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-center my-4" style="font-family: 'Trebuchet MS', serif;">LIGAS</h1>
+
+    {% for liga in ligas %}
+        <div class="card o-hidden border-0 shadow-lg m-4" style="max-width: 97%!important;">
+            <div class="card-header py-3">
+                <h4 class="text-uppercase font-weight-bold text-center">{{liga.nombre}}</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Jugados</th>
+                            <th>Ganados</th>
+                            <th>Empatados</th>
+                            <th>Perdidos</th>
+                            <th>Goles a favor</th>
+                            <th>Goles en contra</th>
+                            <th>Diferencia de gol</th>
+                            <th>Puntos</th>
+                            <th colspan="2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for equipo in equipos %}
+                            {% if equipo.liga.id == liga.id %}
+                                <tr>
+                                    <td>{{equipo.nombre}}</td>
+                                    <td>{{equipo.jugados}}</td>
+                                    <td>{{equipo.ganados}}</td>
+                                    <td>{{equipo.empatados}}</td>
+                                    <td>{{equipo.perdidos}}</td>
+                                    <td>{{equipo.goles_a_favor}}</td>
+                                    <td>{{equipo.goles_en_contra}}</td>
+                                    <td>{{equipo.diferencia_goles}}</td>
+                                    <td>{{equipo.puntos}}</td>
+                                    <td><a class="btn btn-secondary" href="/equipo/editar_equipo/{{equipo.id}}">Editar</a></td>
+                                    <td><a class="btn btn-danger" href="/equipo/eliminar_equipo/{{equipo.id}}">Eliminar</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <a href="/equipo/crear_equipo/{{liga.id}}" class="btn btn-success">Añadir equipo</a>
+                </div>
+            </div>
+        </div>        
+        
+    {% endfor %}
+
+{% endblock %}
