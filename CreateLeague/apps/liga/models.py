@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from apps.base.models import BaseModel
 
-class Liga(models.Model):
+
+class Liga(BaseModel):
     LIGUILLA = 0
     ELIMINACION_DIRECTA = 1
     COPA = 2
@@ -19,3 +21,7 @@ class Liga(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name = 'Liga'
+        verbose_name_plural = 'Ligas'

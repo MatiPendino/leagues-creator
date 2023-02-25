@@ -5,14 +5,6 @@ from apps.liga.models import Liga
 from apps.sitio.form import EquipoForm
 
 
-def mostrar_nombre_equipo(request, equipo):
-    context = {
-        "nombre_equipo": equipo
-    }
-
-    return render(request, "mostrar_nombre.html", context)
-
-
 def crear_equipo(request, id_liga):
     liga = Liga.objects.get(id=id_liga)
     form_equipo = EquipoForm()

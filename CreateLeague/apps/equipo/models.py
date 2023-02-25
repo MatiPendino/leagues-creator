@@ -1,9 +1,10 @@
 from django.db import models
 
 from apps.liga.models import Liga
+from apps.base.models import BaseModel
 
 
-class Equipo(models.Model):
+class Equipo(BaseModel):
     nombre = models.CharField(max_length=55)
     jugados = models.IntegerField(default=0)
     ganados = models.IntegerField(default=0)
@@ -27,3 +28,7 @@ class Equipo(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        verbose_name = 'Equipo'
+        verbose_name_plural = 'Equipos'
